@@ -33,7 +33,7 @@
 #endif
 #endif
 
-@interface TDBadgeView : UIView
+@interface TDBadgeView : UIControl
 {
     UIColor *__defaultColor;
     UIColor *__defaultHighlightColor;

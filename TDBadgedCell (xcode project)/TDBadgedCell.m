@@ -45,7 +45,7 @@
     __defaultHighlightColor = [UIColor whiteColor];
     
     UIColor *colour;
-    if((__parent.selectionStyle != UITableViewCellSelectionStyleNone) && (__parent.highlighted || __parent.selected))
+    if(self.isHighlightedState || self.isSelectedState)
 		if (__badgeColorHighlighted)
 			colour = __badgeColorHighlighted;
 		else
@@ -79,7 +79,7 @@
     
 	// Draw and clip the badge text from the badge shape
     UIColor *stringColor = nil;
-    if((__parent.highlighted || __parent.selected)) {
+    if(self.isHighlightedState || self.isSelectedState) {
         stringColor = __badgeTextColorHighlighted ? __badgeTextColorHighlighted : UIColor.lightGrayColor;
     } else {
         if(__badgeTextColor) {
@@ -109,6 +109,26 @@
     // Set any additional styles for select states
     [[self layer] setCornerRadius:radius];
 	
+}
+
+- (void)setHighlighted:(BOOL)highlighted{
+    [super setHighlighted:highlighted];
+    [self setNeedsDisplay];
+}
+
+- (void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
+    [self setNeedsDisplay];
+}
+
+- (BOOL)isSelectedState
+{
+    return __parent.selected || self.selected;
+}
+
+- (BOOL)isHighlightedState
+{
+     return __parent.highlighted || self.highlighted;
 }
 
 - (void) dealloc
