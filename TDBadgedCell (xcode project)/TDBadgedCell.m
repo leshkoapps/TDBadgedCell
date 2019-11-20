@@ -74,7 +74,7 @@
     // Create a frame for the badge text
 	CGRect bounds = CGRectMake((rect.size.width / 2) - (numberSize.width / 2) ,
                                ((rect.size.height / 2) - (numberSize.height / 2)),
-                               numberSize.width + 12 , numberSize.height);
+                               numberSize.width , numberSize.height);
     
     
 	// Draw and clip the badge text from the badge shape
